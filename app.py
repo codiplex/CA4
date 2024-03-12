@@ -1,8 +1,13 @@
 import pymongo
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 def list_rows(database_name, collection_name):
     # Connect to MongoDB
-    client = pymongo.MongoClient("mongodb://localhost:27017/")
+    client = pymongo.MongoClient(os.getenv("MONGO_URI"))
 
     # Select database
     db = client[database_name]
